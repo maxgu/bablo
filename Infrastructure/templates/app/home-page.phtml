@@ -5,15 +5,18 @@
     <p>
         Tool for friends and roommates to track bills and other shared expenses, so that everyone gets paid back.
     </p>
-    <p>
-        <small class="text-muted font-weight-light">Kucheryaviy production &copy;<?=date('Y')?></small>
+    <p class="lead mt-5">
+        <a class="btn btn-primary btn-lg btn-block" href="<?=$this->url('create-event')?>" role="button">
+            Create event&nbsp;&nbsp;<i class="fa fa-hand-point-right"></i>
+        </a>
     </p>
 </div>
 
 <div class="row">
-    <div class="offset-4 col-md-4">
-        <a class="btn btn-primary btn-lg btn-block" href="<?=$this->url('create-event')?>" role="button">
-            Create event&nbsp;&nbsp;<i class="fa fa-hand-point-right"></i>
-        </a>
+    <div class="offset-3 col-md-6">
+        <hr class="my-2 mt-5">
+        <p>
+            <small class="text-muted font-weight-light">Kucheryaviy production &copy;<?=date('Y')?></small>
+        </p>
     </div>
 </div>

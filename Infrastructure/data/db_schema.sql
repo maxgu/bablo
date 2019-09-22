@@ -1,0 +1,17 @@
+CREATE TABLE `db_events` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `slug` CHAR(6) NOT NULL,
+    `name` VARCHAR(100),
+    `members` VARCHAR(500),
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1000;
+
+CREATE TABLE `db_expenses` (
+     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+     `eventId` INT UNSIGNED NOT NULL,
+     `description` VARCHAR(200),
+     `amount` INT UNSIGNED,
+     `paidBy` VARCHAR(100),
+     PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1000;

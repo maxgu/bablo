@@ -1,0 +1,2 @@
+#!/bin/bash
+docker exec -it toolbox-php-fpm /application/bin/cli $@

@@ -1,0 +1,25 @@
+<?php $this->headTitle('Create event'); ?>
+
+<div class="row">
+    <div class="offset-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="event-name">Event name</label>
+                        <input name="eventName" type="text" class="form-control" id="event-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="members">Members</label>
+                        <input name="members" type="text" class="form-control" id="members">
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            Укажите имена, разделяя запятой.
+                        </small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

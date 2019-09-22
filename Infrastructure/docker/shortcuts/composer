@@ -1,0 +1,25 @@
+#!/bin/bash
+mkdir -p ~/.composer
+COMPOSER_HOME=~/.composer
+
+if [ "$(uname)" == "Darwin" ]; then
+    docker run --rm --interactive --tty \
+    --volume $(dirname $PWD)/toolbox:/app \
+    --volume $COMPOSER_HOME:/composer \
+    --volume ~/.ssh:/root/.ssh \
+    --volume $SSH_AUTH_SOCK:/ssh-auth.sock \
+    --volume /etc/passwd:/etc/passwd:ro \
+    --volume /etc/group:/etc/group:ro \
+    --env SSH_AUTH_SOCK=/ssh-auth.sock \
+    composer $@ --ignore-platform-reqs --no-interaction
+else
+    docker run --rm --interactive --tty \
+    --volume $(dirname $PWD)/toolbox:/app \
+    --volume $COMPOSER_HOME:/composer \
+    --volume $SSH_AUTH_SOCK:/ssh-auth.sock \
+    --volume /etc/passwd:/etc/passwd:ro \
+    --volume /etc/group:/etc/group:ro \
+    --env SSH_AUTH_SOCK=/ssh-auth.sock \
+    --user $(id -u):$(id -g) \
+    composer $@ --ignore-platform-reqs --no-interaction
+fi

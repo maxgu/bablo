@@ -1,0 +1,43 @@
+<?php
+$this->headTitle('Read event');
+/** @var \Domain\Query\ReadEvent\ReadEventDTO $event */
+/** @var \Domain\Query\Expense\ExpenseDTO[] $expenses */
+?>
+
+<div class="row">
+    <div class="offset-3 col-md-6">
+        <div class="card">
+            <div class="card-body clearfix">
+                <h1 class="card-title float-left"><i class="fa fa-atom"></i> <?=$event->getName()?></h1>
+                <a href="<?=$this->url('create-event')?>" class="btn btn-outline-secondary btn-sm float-right">+ add event</a>
+            </div>
+            <div class="card-body clearfix">
+                <h4 class="card-title float-left">Members</h4>
+                <a href="#" class="btn btn-outline-secondary btn-sm float-right">+ add member</a>
+            </div>
+            <ul class="list-group list-group-flush">
+                <?php foreach ($event->getMembersWithCalculations() as $member): ?>
+                    <li class="list-group-item">
+                        <?=$member['name']?>
+                        <?php foreach($member['calculations'] as $name => $calculation):?>
+                            <span class="float-right text-secondary"><i class="fa fa-long-arrow-alt-left"></i> <?=$name?> <?=$calculation?> &euro;</span><br/>
+                        <?php endforeach; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+            <div class="card-body clearfix">
+                <h4 class="card-title float-left">Expenses</h4>
+                <a href="<?=$this->url('add-expense', ['eventSlug' => $event->getSlug()])?>" class="btn btn-outline-secondary btn-sm float-right">+ add expense</a>
+            </div>
+            <ul class="list-group list-group-flush">
+                <?php foreach ($expenses as $expense): ?>
+                    <li class="list-group-item">
+                        <span class="text-secondary"><?=$expense->getPaidBy()?> <i class="fa fa-long-arrow-alt-right"></i></span> <?=$expense->getDescription()?>
+                        <span class="float-right"><?=$expense->getAmount()?> &euro;</span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>
